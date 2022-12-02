@@ -18,7 +18,7 @@ class CategoryController extends \Symfony\Bundle\FrameworkBundle\Controller\Abst
     /**
      * @Route("/api/v1/book/categories", name="app_categories")
      */
-    public function getCategories(): Response {
+    public function categories(): Response {
         return $this->json($this->categoryService->getCategories());
     }
 }
