@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\BookRepository;
+use App\Repository\CategoryRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=BookRepository::class)
+ * @ORM\Entity(repositoryClass=CategoryRepository::class)
  */
-class Book
+class Category
 {
     /**
      * @ORM\Id
@@ -21,6 +21,11 @@ class Book
      * @ORM\Column(type="string", length=255)
      */
     private string $title;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private string $slug;
 
     public function getId(): ?int
     {
@@ -35,6 +40,18 @@ class Book
     public function setTitle(string $title): self
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }
