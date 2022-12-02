@@ -8,3 +8,18 @@
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
+/docker-compose.override.yml
+/docker-compose.yml
+/docker-composer.yaml
+/tools/php-cs-fixer/vendor/
+
+###> symfony/phpunit-bridge ###
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###
+
+###> phpunit/phpunit ###
+/phpunit.xml
+.phpunit.result.cache
+###< phpunit/phpunit ###
+/.env.test
