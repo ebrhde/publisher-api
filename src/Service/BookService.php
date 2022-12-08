@@ -23,13 +23,13 @@ class BookService
     public function getBooksByCategory($categoryId): BookApiResponse
     {
         $category = $this->categoryRepository->find($categoryId);
-        if($category === null) {
+        if ($category === null) {
             throw new CategoryNotFoundException();
         }
 
         return new BookApiResponse(array_map(
-           [$this, 'map'],
-           $this->bookRepository->findBooksByCategoryId($categoryId)
+            [$this, 'map'],
+            $this->bookRepository->findBooksByCategoryId($categoryId)
         ));
     }
 

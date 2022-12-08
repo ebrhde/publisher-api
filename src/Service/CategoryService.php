@@ -6,7 +6,6 @@ use App\Entity\Category;
 use App\Model\CategoryApiResponse;
 use App\Model\CategoryApiResponseItem;
 use App\Repository\CategoryRepository;
-use Doctrine\Common\Collections\Criteria;
 
 class CategoryService
 {
@@ -19,13 +18,16 @@ class CategoryService
 
     public function getCategories(): CategoryApiResponse
     {
-        $categories = $this->categoryRepository->findBy([],['title' => Criteria::ASC]);
+        $categories = $this->categoryRepository->findAllSortedByTitle();
         $items = array_map(
             function (Category $category) {
                 return new CategoryApiResponseItem(
-                    $category->getId(), $category->getTitle(), $category->getSlug()
+                    $category->getId(),
+                    $category->getTitle(),
+                    $category->getSlug()
                 );
-            }, $categories
+            },
+            $categories
         );
 
         return new CategoryApiResponse($items);
