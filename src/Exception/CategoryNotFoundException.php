@@ -2,12 +2,12 @@
 
 namespace App\Exception;
 
-use Symfony\Component\HttpFoundation\Response;
+use RuntimeException;
 
-class CategoryNotFoundException extends \RuntimeException
+class CategoryNotFoundException extends RuntimeException
 {
     public function __construct()
     {
-        parent::__construct('Category was not found', Response::HTTP_NOT_FOUND);
+        parent::__construct('Category was not found');
     }
 }
