@@ -22,8 +22,7 @@ class BookService
 
     public function getBooksByCategory($categoryId): BookApiResponse
     {
-        $category = $this->categoryRepository->find($categoryId);
-        if ($category === null) {
+        if (!$this->categoryRepository->existsById($categoryId)) {
             throw new CategoryNotFoundException();
         }
 
