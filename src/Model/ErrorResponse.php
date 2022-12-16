@@ -5,7 +5,7 @@ namespace App\Model;
 class ErrorResponse
 {
     private string $message;
-    private $details;
+    private ?array $details;
 
     public function __construct(string $message, $details = null)
     {
@@ -13,6 +13,9 @@ class ErrorResponse
         $this->details = $details;
     }
 
+    /**
+     * @return string[]
+     */
     public function getDetails()
     {
         return $this->details;
